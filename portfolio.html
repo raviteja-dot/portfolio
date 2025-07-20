@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raviteja Chimakurthi | Portfolio</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    margin: 0;
+    background: linear-gradient(135deg, #fdfbfb, #ebedee);
+    color: #333;
+    transition: background 0.3s, color 0.3s;
+  }
+  header {
+    padding: 40px 20px;
+    text-align: center;
+    background: rgba(255,255,255,0.5);
+    backdrop-filter: blur(8px);
+  }
+  header h1 { margin: 0; font-size: 2.5em; }
+  header p { font-size: 1.2em; }
+  .section { padding: 40px 20px; max-width: 900px; margin: auto; }
+  .projects input[type="text"] {
+    padding: 8px; width: 100%; margin-bottom: 20px;
+    border: 1px solid #ccc; border-radius: 8px;
+  }
+  .filter-btns button {
+    padding: 8px 16px; margin: 5px;
+    border: none; border-radius: 8px; background: #007bff; color: white;
+    cursor: pointer; transition: background 0.3s;
+  }
+  .filter-btns button:hover { background: #0056b3; }
+  .project-list { display: flex; flex-wrap: wrap; gap: 20px; }
+  .project {
+    flex: 1 1 200px; padding: 10px; background: white;
+    border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    cursor: pointer; transition: transform 0.2s;
+  }
+  .project:hover { transform: scale(1.03); }
+  .skills .bar { background: #ddd; border-radius: 8px; overflow: hidden; margin: 8px 0; }
+  .skills .bar-fill {
+    display: block; height: 16px; background: #28a745; width: 0%;
+    transition: width 1s;
+  }
+  .profile-settings { text-align: center; margin-top: 20px; }
+  footer { text-align: center; padding: 20px; font-size: 0.9em; color: #555; }
+  .dark-mode {
+    background: #121212; color: #f0f0f0;
+  }
+  .dark-mode .project { background: #1e1e1e; }
+  .dark-mode .bar { background: #333; }
+  .hidden { display: none; }
+  .linkedin-button {
+    display:inline-block; padding:10px 20px; background:#0077b5; color:white; 
+    border-radius:8px; text-decoration:none; font-weight:bold; margin-top:15px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Raviteja Chimakurthi</h1>
+  <p>Web Developer | Creative Coder | Problem Solver</p>
+</header>
+
+<div class="section about" id="homePage">
+  <h2>About Me</h2>
+  <p>Enthusiastic about web development and creative coding, I enjoy designing clean, interactive, and accessible web applications. My goal is to combine technical skill with creative thinking to deliver unique digital experiences.</p>
+  <a href="https://www.linkedin.com/in/raviteja-chimakurthi-153028365" target="_blank" class="linkedin-button">
+    Connect on LinkedIn
+  </a>
+</div>
+
+<div class="section projects" id="projectsSection">
+  <h2>Projects</h2>
+  <input type="text" id="searchInput" placeholder="Search projects...">
+  <div class="filter-btns">
+    <button onclick="filterProjects('all')">All</button>
+    <button onclick="filterProjects('web')">Web</button>
+  </div>
+  <div class="project-list" id="projectList">
+    <div class="project" data-category="web" onclick="showProject('eMart')">e-Mart</div>
+    <div class="project" data-category="web" onclick="showProject('PortfolioPro')">PortfolioPro</div>
+    <div class="project" data-category="web" onclick="showProject('QuickNotes')">QuickNotes</div>
+    <div class="project" data-category="web" onclick="showProject('WeatherNow')">WeatherNow</div>
+  </div>
+</div>
+
+<div class="section skills">
+  <h2>Skills</h2>
+  <p>HTML</p><div class="bar"><span class="bar-fill" style="width:90%"></span></div>
+  <p>CSS</p><div class="bar"><span class="bar-fill" style="width:85%"></span></div>
+  <p>JavaScript</p><div class="bar"><span class="bar-fill" style="width:80%"></span></div>
+  <p>React</p><div class="bar"><span class="bar-fill" style="width:75%"></span></div>
+  <p>Java</p><div class="bar"><span class="bar-fill" style="width:70%"></span></div>
+</div>
+
+<div class="section contact">
+  <h2>Contact</h2>
+  <p>Email: ravitejachimakurthi5@gmail.com</p>
+  <p>LinkedIn: <a href="https://www.linkedin.com/in/raviteja-chimakurthi-153028365" target="_blank">Profile</a></p>
+  <p>GitHub: <a href="https://github.com/raviteja-dot" target="_blank">raviteja-dot</a></p>
+  <p>Phone: 6305041211</p>
+</div>
+
+<div class="profile-settings">
+  <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
+</div>
+
+<!-- Project Detail Pages -->
+<div id="eMartPage" class="section hidden">
+  <h2>e-Mart</h2>
+  <p>An online shopping platform where users can buy anything; shows my experience in building e-commerce interfaces.</p>
+  <button onclick="goHome()">← Back to Projects</button>
+</div>
+
+<div id="PortfolioProPage" class="section hidden">
+  <h2>PortfolioPro</h2>
+  <p>A modern, responsive personal portfolio template built with HTML, CSS, and JS; features dark mode, search, and clean UI.</p>
+  <button onclick="goHome()">← Back to Projects</button>
+</div>
+
+<div id="QuickNotesPage" class="section hidden">
+  <h2>QuickNotes</h2>
+  <p>A simple web-based notes app built with vanilla JS; lets users create, edit, and delete notes directly in the browser.</p>
+  <button onclick="goHome()">← Back to Projects</button>
+</div>
+
+<div id="WeatherNowPage" class="section hidden">
+  <h2>WeatherNow</h2>
+  <p>A weather dashboard that fetches real-time data from an API and shows current weather, temperature, and icons.</p>
+  <button onclick="goHome()">← Back to Projects</button>
+</div>
+
+<footer>&copy; 2025 Raviteja Chimakurthi. All rights reserved.</footer>
+
+<script>
+  // Live search
+  document.getElementById('searchInput').addEventListener('input', function() {
+    let search = this.value.toLowerCase();
+    document.querySelectorAll('.project').forEach(proj => {
+      proj.style.display = proj.textContent.toLowerCase().includes(search) ? 'block' : 'none';
+    });
+  });
+
+  // Filter projects by category
+  function filterProjects(category) {
+    document.querySelectorAll('.project').forEach(proj => {
+      proj.style.display = (category === 'all' || proj.dataset.category === category) ? 'block' : 'none';
+    });
+  }
+
+  // Dark mode toggle
+  function toggleDarkMode() {
+    document.body.classList.toggle('dark-mode');
+  }
+
+  // Animate skill bars on load
+  window.onload = () => {
+    document.querySelectorAll('.bar-fill').forEach(bar => {
+      let width = bar.style.width;
+      bar.style.width = '0';
+      setTimeout(() => { bar.style.width = width; }, 100);
+    });
+  };
+
+  // Show project detail page
+  function showProject(projectId) {
+    document.getElementById('homePage').classList.add('hidden');
+    document.getElementById('projectsSection').classList.add('hidden');
+    document.querySelectorAll('[id$="Page"]').forEach(page => page.classList.add('hidden'));
+    document.getElementById(projectId + 'Page').classList.remove('hidden');
+  }
+
+  // Back to home/projects
+  function goHome() {
+    document.querySelectorAll('[id$="Page"]').forEach(page => page.classList.add('hidden'));
+    document.getElementById('homePage').classList.remove('hidden');
+    document.getElementById('projectsSection').classList.remove('hidden');
+  }
+</script>
+
+</body>
+</html>
